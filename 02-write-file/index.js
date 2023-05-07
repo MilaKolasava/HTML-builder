@@ -20,4 +20,8 @@ stdin.on('data', (data) => {
     writeToStream(data);
 });
 
-process.on('exit', () => stdout.write('Текст записан'));
+process.on('SIGINT', () => {
+    process.exit();
+});
+
+process.on('exit', () => stdout.write('Спасибо, текст записан. Всего хорошего!'));
